@@ -1,9 +1,6 @@
 #!/bin/bash
 
-A=`jq 'map({name: .name.en, muscle: .muscle}) | .[]' tests/fixtures/exercises.json`
-B=`jq 'map({name: .name, muscle: .primaryMuscles[0]}) | .[]' tests/fixtures/exercisesb.json`
-
-ACTUAL=`echo $A $B | jq -s`
+ACTUAL=`./map.sh`
 
 diff tests/expect.json <(echo $ACTUAL | jq)
 
