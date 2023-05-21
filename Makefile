@@ -1,4 +1,7 @@
 .PHONY: all
 
-all:
-  cat fixtures/exercises.json | jq 'map({name: .name.en, muscle: .muscle, description: .description})'
+all: clean
+	./main.sh
+
+clean:
+	rm -f out/exercises.json
